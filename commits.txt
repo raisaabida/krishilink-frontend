@@ -1,0 +1,26 @@
+Suggested client-side commit sequence (15 commits)
+1. feat: initial Vite + React + Tailwind setup
+2. feat: add main layout (Header, Footer) and routing
+3. feat: create Home page and hero + latest posts section
+4. feat: implement local simulated DB (localStorage) and seed data
+5. feat: All Crops page with search & no-results UI
+6. feat: Crop Details page layout and interest sidebar
+7. feat: implement interest submission logic and validation
+8. feat: owner received interests table with accept/reject actions
+9. feat: Add Crop form and connect with simulated backend
+10. feat: My Posts page with delete functionality
+11. feat: My Interests page and links back to detail pages
+12. feat: Profile page and inline editing
+13. chore: add toast component for notifications
+14. style: responsive improvements and layout polish
+15. docs: add README and commits guide
+
+Suggested server-side commit messages (8 commits)
+1. feat(server): express + mongodb basic scaffold
+2. feat(server): auth routes and JWT token handling
+3. feat(server): crops CRUD endpoints
+4. feat(server): interests endpoints (submit, update)
+5. feat(server): protect routes with admin SDK (optional)
+6. fix(server): validation and error handling middleware
+7. chore(server): add CI deploy config
+8. docs(server): update README and API docs
