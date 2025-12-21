@@ -1,8 +1,4 @@
-/**
- * Simple simulated backend stored in localStorage.
- * This file exposes functions to work with crops, users and interests.
- * No Lorem text, and custom notifications used (not default alert).
- */
+
 
 const LS_KEY = 'krishilink_db_v1';
 
