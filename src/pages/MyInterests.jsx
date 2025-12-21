@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getCrops } from "../lib/api";
 import { useAuth } from "../context/AuthContext";
 
+
 export default function MyInterests() {
   const { user } = useAuth();
   const [interests, setInterests] = useState([]);
@@ -30,6 +31,7 @@ export default function MyInterests() {
           });
         });
 
+
         setInterests(myInterests);
       })
       .finally(() => setLoading(false));
@@ -39,6 +41,7 @@ export default function MyInterests() {
     return <p className="text-center mt-20">Loading...</p>;
   }
 
+  
   return (
     <div data-aos="fade-up" className="space-y-6">
       <h2 className="text-3xl font-bold text-green-700">
