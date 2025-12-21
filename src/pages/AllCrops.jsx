@@ -14,6 +14,7 @@ export default function AllCrops() {
       .finally(() => setLoading(false));
   }, []);
 
+
   const filteredCrops = crops.filter((crop) =>
     crop.name.toLowerCase().includes(search.toLowerCase())
   );
@@ -22,6 +23,8 @@ export default function AllCrops() {
     return <p className="text-center mt-20">Loading crops...</p>;
   }
 
+
+  
   return (
     <div className="p-6 max-w-7xl mx-auto">
 
