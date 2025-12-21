@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import toast from "react-hot-toast";
 
+
 export default function Login() {
   const { login } = useAuth();
   const navigate = useNavigate();
@@ -20,6 +21,7 @@ export default function Login() {
     }
   }
 
+  
   return (
     <div className="min-h-screen flex items-center justify-center bg-green-50">
       <form onSubmit={submit} className="bg-white p-8 rounded-xl w-96 shadow">
