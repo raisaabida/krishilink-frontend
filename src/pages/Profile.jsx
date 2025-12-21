@@ -1,6 +1,7 @@
 import React from "react";
 import { useAuth } from "../context/AuthContext";
 
+
 export default function Profile() {
   const { user, loading } = useAuth();
 
@@ -8,6 +9,7 @@ export default function Profile() {
   if (loading) {
     return <p className="text-center mt-20">Loading profile...</p>;
   }
+
 
   // If user is not logged in
   if (!user) {
@@ -17,6 +19,7 @@ export default function Profile() {
       </p>
     );
   }
+
 
   return (
     <div className="max-w-xl mx-auto mt-10 card bg-base-100 shadow p-6 space-y-4">
