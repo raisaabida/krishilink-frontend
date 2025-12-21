@@ -12,6 +12,7 @@ export default function CropDetails() {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(true);
 
+
   useEffect(() => {
     getCropById(id)
       .then(setCrop)
@@ -28,6 +29,7 @@ export default function CropDetails() {
   message,
 });
 
+
       alert("Interest sent successfully!");
       setQuantity(1);
       setMessage("");
@@ -36,6 +38,7 @@ export default function CropDetails() {
     }
   }
 
+  
   if (loading) {
     return <p className="text-center mt-20">Loading crop...</p>;
   }
