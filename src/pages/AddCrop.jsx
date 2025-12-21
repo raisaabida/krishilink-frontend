@@ -17,6 +17,7 @@ export default function AddCrop() {
     description: "",
   });
 
+
   function handleChange(e) {
     setForm({
       ...form,
@@ -46,6 +47,8 @@ export default function AddCrop() {
     }
   }
 
+
+  
   return (
     <div data-aos="fade-up" className="max-w-2xl mx-auto">
       <h2 className="text-3xl font-bold text-green-700 mb-6">
