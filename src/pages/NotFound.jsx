@@ -2,6 +2,7 @@ import React from "react";
 
 export default function NotFound() {
   return (
+    
     <div
       className="min-h-[70vh] flex items-center justify-center px-4"
       data-aos="zoom-in"
