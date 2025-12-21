@@ -13,6 +13,7 @@ import NotFound from "./pages/NotFound";
 import { Toaster } from "react-hot-toast";
 import { useAuth } from "./context/AuthContext";
 
+
 /* ===================== NAVBAR ===================== */
 function Nav() {
   const { user, logout } = useAuth();
@@ -49,6 +50,7 @@ function Nav() {
               </>
             )}
 
+
             {!user && (
               <>
                 <li><Link to="/login">Login</Link></li>
@@ -61,6 +63,7 @@ function Nav() {
     </header>
   );
 }
+
 
 /* ===================== FOOTER ===================== */
 function Footer() {
@@ -95,6 +98,7 @@ function Footer() {
     </footer>
   );
 }
+
 
 /* ===================== PROTECTED ROUTE ===================== */
 function PrivateRoute({ children }) {
