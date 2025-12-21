@@ -7,6 +7,7 @@ import { AuthProvider } from "./context/AuthContext";
 // Tailwind / DaisyUI styles
 import './index.css'
 
+
 // AOS animations
 import 'aos/dist/aos.css'
 import AOS from 'aos'
@@ -18,6 +19,7 @@ AOS.init({
   easing: "ease-out-cubic",
 })
 
+
 createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
@@ -27,4 +29,5 @@ createRoot(document.getElementById('root')).render(
       </BrowserRouter>
   </React.StrictMode>
 )
+
 
