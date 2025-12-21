@@ -19,6 +19,8 @@ import paddyImg from "../assets/paddy.jpg";
 import carrotImg from "../assets/carrot.jpg";
 import turmericImg from "../assets/turmeric.jpg";
 import crops from "../data/crops";
+
+
 export default function Home({ user }) {
  
 
@@ -105,6 +107,7 @@ const latest = crops.slice(0, 5);
         </Swiper>
       </section>
 
+
       {/* ================= LATEST CROPS ================= */}
       <section className="rounded-3xl bg-gradient-to-br from-green-100 via-lime-50 to-yellow-100 p-10 shadow-xl">
         <h2 className="text-3xl font-extrabold text-green-800">
@@ -132,6 +135,7 @@ const latest = crops.slice(0, 5);
           ))}
         </div>
 
+
         <div className="text-right mt-6">
           <Link to="/all-crops" className="link text-green-700 font-semibold">
             View All →
@@ -158,6 +162,7 @@ const latest = crops.slice(0, 5);
           </div>
         ))}
       </section>
+      
 
       {/* ================= COMMUNITY ================= */}
       <section className="rounded-3xl bg-gradient-to-r from-green-500 to-lime-500 text-white p-12 text-center shadow-xl">
