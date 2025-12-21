@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import { getCrops, deleteCrop } from "../lib/api";
 import { useAuth } from "../context/AuthContext";
 
+
 export default function MyPosts() {
   const { user } = useAuth();
   const [myPosts, setMyPosts] = useState([]);
   const [loading, setLoading] = useState(true);
+
 
   useEffect(() => {
     if (!user?.email) return;
@@ -31,6 +33,7 @@ export default function MyPosts() {
       alert("Failed to delete crop");
     }
   }
+  
 
   if (loading) {
     return <p className="text-center mt-20">Loading...</p>;
