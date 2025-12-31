@@ -18,6 +18,8 @@ This is a complete frontend scaffold for **KrishiLink**, a Farmer’s Growth & C
 2. Run dev server: `npm run dev`
 3. Open http://localhost:5173
 
+## Live project link :
+krishilink-frontend.netlify.app
 
 ## Important notes for submission
 - To satisfy the assignment GitHub commit requirement, I've included `commits.txt` with a suggested sequence of 15+ client-side commits and 8 server-side commits. You can replay them locally using git commands (or import the messages).
