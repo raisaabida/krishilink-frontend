@@ -3,27 +3,32 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import toast from "react-hot-toast";
 
-
 export default function Register() {
   const { register } = useAuth();
   const navigate = useNavigate();
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [photo, setPhoto] = useState("");
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    password: "",
+    photo: ""
+  });
 
   async function submit(e) {
     e.preventDefault();
     try {
-      await register(email, password, name, photo);
+      await register(
+        form.email,
+        form.password,
+        form.name,
+        form.photo
+      );
       toast.success("Account created!");
       navigate("/");
     } catch (err) {
       toast.error(err.message);
     }
   }
-  
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-green-50">
@@ -32,35 +37,19 @@ export default function Register() {
           Register
         </h2>
 
-        <input
-          placeholder="Name"
-          className="input input-bordered w-full mb-3"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-
-        <input
-          type="email"
-          placeholder="Email"
-          className="input input-bordered w-full mb-3"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-
-        <input
-          type="password"
-          placeholder="Password"
-          className="input input-bordered w-full mb-3"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-
-        <input
-          placeholder="Photo URL (optional)"
-          className="input input-bordered w-full mb-4"
-          value={photo}
-          onChange={(e) => setPhoto(e.target.value)}
-        />
+        {["name", "email", "password", "photo"].map((field) => (
+          <input
+            key={field}
+            type={field === "password" ? "password" : "text"}
+            placeholder={field.toUpperCase()}
+            className="input input-bordered w-full mb-3"
+            value={form[field]}
+            onChange={e =>
+              setForm({ ...form, [field]: e.target.value })
+            }
+            required={field !== "photo"}
+          />
+        ))}
 
         <button className="btn bg-green-600 text-white w-full">
           Register

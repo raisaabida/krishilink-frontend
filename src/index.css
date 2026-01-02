@@ -2,17 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom globals */
-body { @apply bg-gray-50 text-slate-800; }
-.container { @apply max-w-6xl mx-auto px-4; }
+/* ================= GLOBAL THEME ================= */
+body {
+  @apply bg-gray-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100;
+}
 
-/* Simple loader */
+.container {
+  @apply max-w-6xl mx-auto px-4;
+}
+
+/* ================= UI COMPONENTS ================= */
+.btn {
+  @apply px-4 py-2 rounded-xl font-medium transition disabled:opacity-50;
+}
+
+.btn-primary {
+  @apply bg-green-600 text-white hover:bg-green-700;
+}
+
+.btn-outline {
+  @apply border border-green-600 text-green-600 hover:bg-green-50 dark:hover:bg-slate-800;
+}
+
+.input {
+  @apply w-full px-3 py-2 border rounded-lg outline-none focus:ring-2 focus:ring-green-500
+  dark:bg-slate-800 dark:border-slate-600;
+}
+
+/* ================= LOADER ================= */
 .loader {
-  border-top-color: transparent;
-  animation: spinner 0.7s linear infinite;
-  border-radius: 9999px;
-  border: 3px solid rgba(0,0,0,0.12);
   width: 28px;
   height: 28px;
+  border-radius: 9999px;
+  border: 3px solid rgba(0,0,0,0.2);
+  border-top-color: transparent;
+  animation: spin 0.7s linear infinite;
 }
-@keyframes spinner { to { transform: rotate(360deg); } }
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

@@ -3,9 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import toast from "react-hot-toast";
 
-
 export default function Login() {
-  const { login } = useAuth();
+  const { login, googleLogin } = useAuth();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -21,7 +20,11 @@ export default function Login() {
     }
   }
 
-  
+  const demoLogin = () => {
+    setEmail("demo@user.com");
+    setPassword("123456");
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-green-50">
       <form onSubmit={submit} className="bg-white p-8 rounded-xl w-96 shadow">
@@ -34,7 +37,8 @@ export default function Login() {
           placeholder="Email"
           className="input input-bordered w-full mb-3"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={e => setEmail(e.target.value)}
+          required
         />
 
         <input
@@ -42,14 +46,31 @@ export default function Login() {
           placeholder="Password"
           className="input input-bordered w-full mb-4"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={e => setPassword(e.target.value)}
+          required
         />
 
-        <button className="btn bg-green-600 text-white w-full">
+        <button className="btn bg-green-600 text-white w-full mb-2">
           Login
         </button>
 
-        <p className="text-center mt-3 text-sm">
+        <button
+          type="button"
+          onClick={demoLogin}
+          className="btn btn-outline w-full mb-3"
+        >
+          Demo User
+        </button>
+
+        <button
+          type="button"
+          onClick={googleLogin}
+          className="btn btn-outline w-full"
+        >
+          Continue with Google
+        </button>
+
+        <p className="text-center mt-4 text-sm">
           New here?{" "}
           <Link to="/register" className="text-green-700 font-semibold">
             Register
@@ -59,4 +80,3 @@ export default function Login() {
     </div>
   );
 }
-
