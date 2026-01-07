@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-// Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -13,8 +12,7 @@ export default function Home({ user }) {
   const latest = crops.slice(0, 5);
 
   return (
-    <div className="space-y-10 pb-12 pt-20">
-
+    <div className="space-y-16 pb-20 pt-20">
 
       {/* ========== HERO / CAROUSEL ========== */}
       <section className="rounded-3xl overflow-hidden shadow-2xl">
@@ -44,7 +42,6 @@ export default function Home({ user }) {
                   <p className="mt-4 max-w-xl">
                     A trusted digital agro marketplace for Bangladesh.
                   </p>
-
                   <div className="mt-6 flex gap-4">
                     <Link
                       to="/all-crops"
@@ -52,7 +49,6 @@ export default function Home({ user }) {
                     >
                       Browse Crops
                     </Link>
-
                     {!user && (
                       <Link
                         to="/register"
@@ -85,14 +81,13 @@ export default function Home({ user }) {
 
       {/* ========== LATEST CROPS ========== */}
       <section className="p-10 rounded-3xl bg-green-50">
-        <h2 className="text-3xl font-bold text-green-700">
+        <h2 className="text-3xl font-bold text-green-700 mb-6">
           🌾 Latest Crop Listings
         </h2>
-
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-6 mt-6">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
           {latest.map((crop) => (
             <Link key={crop.id} to={`/crop/${crop.id}`}>
-              <div className="bg-white rounded-xl shadow p-4 text-center">
+              <div className="bg-white rounded-xl shadow p-4 text-center hover:scale-105 transform transition">
                 <img
                   src={crop.image}
                   alt={crop.name}
@@ -106,26 +101,19 @@ export default function Home({ user }) {
       </section>
 
       {/* ========== HOW IT WORKS ========== */}
-      <section className="grid md:grid-cols-3 gap-6">
-        {[
-          "Post Crops",
-          "Connect Buyers",
-          "Grow Together",
-        ].map((item, i) => (
-          <div
-            key={i}
-            className="p-8 bg-white rounded-2xl shadow text-center"
-          >
+      <section className="grid md:grid-cols-3 gap-6 px-10">
+        {["Post Crops", "Connect Buyers", "Grow Together"].map((item, i) => (
+          <div key={i} className="p-8 bg-white rounded-2xl shadow text-center hover:shadow-lg transition">
             <h3 className="font-bold text-xl text-green-700">{item}</h3>
           </div>
         ))}
       </section>
 
       {/* ========== FEATURES ========== */}
-      <section className="grid md:grid-cols-4 gap-6">
+      <section className="grid md:grid-cols-4 gap-6 px-10">
         {["Verified Farmers", "Fair Prices", "Secure Deals", "Fast Support"].map(
           (f, i) => (
-            <div key={i} className="bg-white p-6 rounded-xl shadow text-center">
+            <div key={i} className="bg-white p-6 rounded-xl shadow text-center hover:shadow-lg transition">
               <h3 className="font-semibold">{f}</h3>
             </div>
           )
@@ -135,14 +123,23 @@ export default function Home({ user }) {
       {/* ========== STATISTICS ========== */}
       <section className="bg-green-100 p-10 rounded-3xl text-center">
         <div className="grid md:grid-cols-3 gap-6">
-          <div><h2 className="text-3xl font-bold">5K+</h2><p>Farmers</p></div>
-          <div><h2 className="text-3xl font-bold">2K+</h2><p>Listings</p></div>
-          <div><h2 className="text-3xl font-bold">98%</h2><p>Success Rate</p></div>
+          <div>
+            <h2 className="text-3xl font-bold">5K+</h2>
+            <p>Farmers</p>
+          </div>
+          <div>
+            <h2 className="text-3xl font-bold">2K+</h2>
+            <p>Listings</p>
+          </div>
+          <div>
+            <h2 className="text-3xl font-bold">98%</h2>
+            <p>Success Rate</p>
+          </div>
         </div>
       </section>
 
       {/* ========== TESTIMONIALS ========== */}
-      <section className="p-10 bg-white rounded-3xl shadow">
+      <section className="p-10 bg-white rounded-3xl shadow px-10">
         <h2 className="text-2xl font-bold">💬 Testimonials</h2>
         <p className="mt-3 italic">
           "KrishiLink helped me sell my crops faster and fairly."
@@ -150,32 +147,30 @@ export default function Home({ user }) {
       </section>
 
       {/* ========== BLOGS ========== */}
-      <section className="p-10 bg-lime-50 rounded-3xl">
+      <section className="p-10 bg-lime-50 rounded-3xl px-10">
         <h2 className="text-2xl font-bold">📘 Farming Tips</h2>
         <p className="mt-2">Modern techniques for better yield.</p>
       </section>
 
       {/* ========== FAQ ========== */}
-      <section className="p-10">
+      <section className="p-10 px-10">
         <h2 className="text-2xl font-bold">❓ FAQ</h2>
         <p>How do I sell crops? → Register & post listing.</p>
       </section>
 
       {/* ========== NEWSLETTER ========== */}
-      <section className="bg-green-700 text-white p-10 rounded-3xl text-center">
+      <section className="bg-green-700 text-white p-10 rounded-3xl text-center px-10">
         <h2 className="text-2xl font-bold">📩 Stay Updated</h2>
         <input
           type="email"
           placeholder="Your email"
-          className="mt-4 p-2 rounded text-black"
+          className="mt-4 p-2 rounded text-black w-full md:w-1/3"
         />
       </section>
 
       {/* ========== COMMUNITY CTA ========== */}
-      <section className="bg-gradient-to-r from-green-500 to-lime-500 p-12 rounded-3xl text-center text-white">
-        <h2 className="text-3xl font-bold">
-          🌿 Built for Farmers & Communities
-        </h2>
+      <section className="bg-gradient-to-r from-green-500 to-lime-500 p-12 rounded-3xl text-center text-white px-10">
+        <h2 className="text-3xl font-bold">🌿 Built for Farmers & Communities</h2>
         {!user && (
           <Link
             to="/register"
@@ -185,6 +180,10 @@ export default function Home({ user }) {
           </Link>
         )}
       </section>
+
+ 
+
+
     </div>
   );
 }

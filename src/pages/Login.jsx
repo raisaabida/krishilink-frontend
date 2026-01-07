@@ -20,10 +20,15 @@ export default function Login() {
     }
   }
 
-  const demoLogin = () => {
-    setEmail("demo@user.com");
-    setPassword("123456");
-  };
+  const demoLogin = async () => {
+  try {
+    await login("demo@user.com", "123456");
+    toast.success("Demo login successful!");
+    navigate("/");
+  } catch (err) {
+    toast.error("Demo login failed");
+  }
+};
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-green-50">

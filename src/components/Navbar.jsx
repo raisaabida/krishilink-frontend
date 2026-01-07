@@ -2,57 +2,41 @@ import { Link } from "react-router-dom";
 
 export default function Navbar({ user, handleLogout }) {
   return (
-    <div className="navbar fixed top-0 z-50 bg-green-700 text-white px-6">
-      
-      {/* Logo */}
-      <Link to="/" className="text-xl font-bold">
-        KrishiLink 🌾
-      </Link>
-
-      {/* Desktop Menu */}
-      <div className="hidden md:flex gap-6 ml-10">
-        <Link to="/">Home</Link>
-        <Link to="/all-crops">Crops</Link>
-        <Link to="/about">About</Link>
-
-        {user && (
-          <>
-            <Link to="/dashboard">Dashboard</Link>
-            <Link to="/my-crops">My Crops</Link>
-          </>
-        )}
-      </div>
-
-      {/* Right Side */}
-      <div className="ml-auto">
-        {!user ? (
-          <div className="flex gap-3">
-            <Link to="/login" className="btn btn-sm bg-yellow-400 text-black">
-              Login
-            </Link>
-            <Link to="/register" className="btn btn-sm bg-white text-green-700">
-              Register
-            </Link>
+    <header className="w-full bg-green-900 text-white">
+      <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+        
+        {/* Logo */}
+        <Link to="/" className="flex items-center gap-3">
+          <div className="w-10 h-10 bg-white text-green-900 rounded-full flex items-center justify-center font-bold">
+            K
           </div>
-        ) : (
-          <div className="dropdown dropdown-end">
-            <label tabIndex={0} className="btn btn-sm">
-              {user.name || "Profile"} ⬇
-            </label>
-            <ul
-              tabIndex={0}
-              className="dropdown-content menu bg-white text-black rounded-box w-40 shadow"
-            >
-              <li>
-                <Link to="/profile">Profile</Link>
-              </li>
-              <li>
-                <button onClick={handleLogout}>Logout</button>
-              </li>
-            </ul>
-          </div>
-        )}
+          <span className="text-xl font-semibold">KrishiLink</span>
+        </Link>
+
+        {/* Nav Links */}
+        <nav className="flex items-center gap-6 text-sm font-medium">
+          <Link to="/" className="hover:text-yellow-300">Home</Link>
+          <Link to="/all-crops" className="hover:text-yellow-300">All Crops</Link>
+
+          {!user ? (
+            <>
+              <Link to="/login" className="hover:text-yellow-300">Login</Link>
+              <Link to="/register" className="hover:text-yellow-300">Register</Link>
+            </>
+          ) : (
+            <>
+              <Link to="/add-crop" className="hover:text-yellow-300">Add Crops</Link>
+              <Link to="/my-posts" className="hover:text-yellow-300">My Posts</Link>
+              <button
+                onClick={() => handleLogout && handleLogout()}
+                className="bg-white text-green-900 px-4 py-1.5 rounded-md hover:bg-gray-100"
+              >
+                Logout
+              </button>
+            </>
+          )}
+        </nav>
       </div>
-    </div>
+    </header>
   );
 }

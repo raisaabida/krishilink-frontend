@@ -1,35 +1,36 @@
+import { Link } from "react-router-dom";
+
 export default function Footer() {
   return (
-    <footer className="bg-green-800 text-white mt-24">
-      <div className="max-w-6xl mx-auto p-10 grid md:grid-cols-3 gap-8">
+    <footer className="bg-green-900 text-white w-full">
+      <div className="max-w-7xl mx-auto px-6 py-12 grid md:grid-cols-3 gap-8">
         
         <div>
-          <h3 className="text-xl font-bold">KrishiLink 🌾</h3>
-          <p className="mt-2 opacity-90">
-            Connecting farmers, buyers, and communities digitally.
+          <h3 className="text-xl font-bold mb-3">KrishiLink 🌾</h3>
+          <p className="text-green-200 text-sm">
+            Empowering farmers with digital trade.
           </p>
         </div>
 
         <div>
-          <h4 className="font-semibold mb-2">Quick Links</h4>
-          <ul className="space-y-1">
-            <li>Home</li>
-            <li>All Crops</li>
-            <li>About</li>
-            <li>Contact</li>
+          <h4 className="font-semibold mb-3">Quick Links</h4>
+          <ul className="space-y-2 text-green-200">
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/all-crops">All Crops</Link></li>
+            <li><Link to="/about">About</Link></li>
+            <li><Link to="/contact">Contact</Link></li>
           </ul>
         </div>
 
         <div>
-          <h4 className="font-semibold mb-2">Contact</h4>
-          <p>Email: support@krishilink.com</p>
-          <p>Phone: +880 1234 567890</p>
-          <p className="mt-2">Facebook • LinkedIn • Twitter</p>
+          <h4 className="font-semibold mb-3">Contact</h4>
+          <p className="text-green-200 text-sm">support@krishilink.com</p>
+          <p className="text-green-200 text-sm">Bangladesh 🇧🇩</p>
         </div>
 
       </div>
 
-      <div className="text-center py-4 bg-green-900 text-sm">
+      <div className="text-center text-sm text-green-300 pb-4">
         © {new Date().getFullYear()} KrishiLink. All rights reserved.
       </div>
     </footer>
