@@ -19,12 +19,17 @@ import DashboardLayout from "./layouts/DashboardLayout";
 import Overview from "./pages/dashboard/Overview";
 
 import Navbar from "./components/Navbar";
-import Footer from "./components/Footer"; // ✅ ADD THIS
+import Footer from "./components/Footer";
 
+/* 🔐 PRIVATE ROUTE */
 function PrivateRoute({ children }) {
   const { user, loading } = useAuth();
-  if (loading) return <p className="text-center mt-20">Loading...</p>;
-  return user ? children : <Navigate to="/login" />;
+
+  if (loading) {
+    return <p className="text-center mt-20">Loading...</p>;
+  }
+
+  return user ? children : <Navigate to="/login" replace />;
 }
 
 export default function App() {
@@ -36,9 +41,9 @@ export default function App() {
 
       <Navbar user={user} handleLogout={logout} />
 
-      {/* Page Content */}
       <main className="container mx-auto py-8 min-h-[70vh] px-4">
         <Routes>
+          {/* PUBLIC */}
           <Route path="/" element={<Home user={user} />} />
           <Route path="/all-crops" element={<AllCrops />} />
           <Route path="/crop/:id" element={<CropDetails />} />
@@ -47,22 +52,59 @@ export default function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
 
-          <Route path="/add-crop" element={<PrivateRoute><AddCrop /></PrivateRoute>} />
-          <Route path="/my-posts" element={<PrivateRoute><MyPosts /></PrivateRoute>} />
-          <Route path="/my-interests" element={<PrivateRoute><MyInterests /></PrivateRoute>} />
-          <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
+          {/* USER PROTECTED */}
+          <Route
+            path="/add-crop"
+            element={
+              <PrivateRoute>
+                <AddCrop />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/my-posts"
+            element={
+              <PrivateRoute>
+                <MyPosts />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/my-interests"
+            element={
+              <PrivateRoute>
+                <MyInterests />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <PrivateRoute>
+                <Profile />
+              </PrivateRoute>
+            }
+          />
 
-          <Route path="/dashboard" element={<PrivateRoute><DashboardLayout /></PrivateRoute>}>
+          {/* DASHBOARD */}
+          <Route
+            path="/dashboard"
+            element={
+              <PrivateRoute>
+                <DashboardLayout />
+              </PrivateRoute>
+            }
+          >
             <Route index element={<Overview />} />
             <Route path="my-posts" element={<MyPosts />} />
             <Route path="profile" element={<Profile />} />
           </Route>
 
+          {/* FALLBACK */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
 
-      {/* ✅ FULL WIDTH FOOTER */}
       <Footer />
     </>
   );

@@ -16,23 +16,26 @@ export default function Login() {
       toast.success("Login successful!");
       navigate("/");
     } catch (err) {
-      toast.error(err.message);
+      toast.error("Invalid email or password");
     }
   }
 
   const demoLogin = async () => {
-  try {
-    await login("demo@user.com", "123456");
-    toast.success("Demo login successful!");
-    navigate("/");
-  } catch (err) {
-    toast.error("Demo login failed");
-  }
-};
+    try {
+      await login("demo@user.com", "123456");
+      toast.success("Demo login successful!");
+      navigate("/");
+    } catch {
+      toast.error("Demo login failed");
+    }
+  };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-green-50">
-      <form onSubmit={submit} className="bg-white p-8 rounded-xl w-96 shadow">
+    <div className="min-h-screen flex items-center justify-center bg-green-50 px-4">
+      <form
+        onSubmit={submit}
+        className="bg-white p-8 rounded-xl w-full max-w-md shadow"
+      >
         <h2 className="text-3xl font-bold text-center text-green-700 mb-6">
           Login
         </h2>
@@ -64,7 +67,7 @@ export default function Login() {
           onClick={demoLogin}
           className="btn btn-outline w-full mb-3"
         >
-          Demo User
+          Login as Demo User
         </button>
 
         <button
@@ -74,6 +77,13 @@ export default function Login() {
         >
           Continue with Google
         </button>
+
+        {/* DEMO INFO (IMPORTANT FOR EXAMINER) */}
+        <div className="mt-4 p-3 bg-gray-100 rounded text-sm text-center">
+          <p className="font-semibold">Demo Credentials</p>
+          <p>Email: demo@user.com</p>
+          <p>Password: 123456</p>
+        </div>
 
         <p className="text-center mt-4 text-sm">
           New here?{" "}

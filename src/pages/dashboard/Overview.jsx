@@ -28,24 +28,33 @@ export default function Overview() {
       .finally(() => setLoading(false));
   }, []);
 
-  if (loading) return <p className="text-center mt-20">Loading dashboard...</p>;
+  if (loading) {
+    return <p className="text-center mt-20">Loading dashboard...</p>;
+  }
+
+  if (!crops.length) {
+    return (
+      <p className="text-center mt-20 text-gray-500">
+        No crops found. Add crops to see statistics.
+      </p>
+    );
+  }
 
   const chartData = {
     labels: crops.map(c => c.name),
     datasets: [
       {
         label: "Number of Interests",
-        data: crops.map(
-          c => interests.filter(i => i.cropId === c._id || i.cropId === c.id).length
+        data: crops.map(c =>
+          interests.filter(i => i.cropId === c._id || i.cropId === c.id).length
         ),
-        backgroundColor: "rgba(34,197,94,0.7)",
-      },
-    ],
+        backgroundColor: "rgba(34,197,94,0.7)"
+      }
+    ]
   };
 
   return (
     <div className="space-y-8">
-      {/* layout untouched */}
       <div className="bg-white p-6 rounded-xl shadow">
         <h3 className="text-lg font-bold mb-4">Interests per Crop</h3>
         <Bar data={chartData} />
